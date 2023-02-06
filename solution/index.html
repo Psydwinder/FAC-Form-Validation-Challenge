@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form validation challenge</title>
+    <link rel="icon" href="data:," />
+    <script defer src="index.js"></script>
+  </head>
+  <body>
+    <form>
+      <label for="name">
+        name
+        <span aria-hidden="true">*</span>
+      </label>
+      <input id="name" required />
+
+      <label for="email">
+        email
+        <span aria-hidden="true">*</span>
+      </label>
+      <input id="email" type="email" required />
+
+      <label for="website">website</label>
+      <input id="website" type="url" />
+
+      <label for="subject">subject</label>
+      <input id="subject" pattern="[a-z0-9\s]+" />
+
+      <label for="message">
+        message
+        <span aria-hidden="true">*</span>
+        <p id="messageHelp">Character limit is 140</p>
+      </label>
+      <textarea
+        id="message"
+        rows="5"
+        required
+        maxlength="140"
+        aria-describedby="messageHelp"
+      ></textarea>
+
+      <button>Submit</button>
+    </form>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        max-inline-size: 28rem;
+        margin-inline: auto;
+        padding: 4rem;
+      }
+      label,
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+      }
+      * + label,
+      button {
+        margin-top: 2rem;
+      }
+      label + * {
+        margin-top: 0.5rem;
+      }
+      label {
+        text-transform: capitalize;
+      }
+      [aria-invalid="true"] {
+        border-color: red;
+      }
+      [aria-invalid="true"] + * {
+        color: red;
+      }
+      [aria-invalid="true"] + *::before {
+        content: "⚠️ ";
+      }
+    </style>
+  </body>
+</html>
